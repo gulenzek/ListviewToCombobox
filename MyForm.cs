@@ -102,6 +102,17 @@ namespace ListviewItemToComboBox
             listView1.Columns.Add("No", 50);
             listView1.Columns.Add("Adı, Soyadı", 200);
         }
+        
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //
+            if (listView1.SelectedItems.Count > 0)
+            {
+                comboBox1.SelectedIndex = listView1.SelectedItems[0].Index;
+            }
+            
+        }
+
         private void ListViewDoldur(List<Kisi> kisiler)
         {
             //ListView üzerindeki bilgiler 
@@ -120,16 +131,7 @@ namespace ListviewItemToComboBox
         }
         #endregion
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //
-            if (listView1.SelectedItems.Count > 0)
-            {
-                comboBox1.SelectedIndex = listView1.SelectedItems[0].Index;
-            }
-            
-        }
-
+        #region ComboBox hazırlanıyor.
         private void ComboBoxDoldur(List<Kisi> kisiler)
         {
             // ComboBox üzerine itemların yerleştirilmesi..
@@ -142,9 +144,8 @@ namespace ListviewItemToComboBox
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             listView1.SelectedItems.Clear();
-            listView1.Items[comboBox1.SelectedIndex].Selected = true;
-            listView1.TabStop = true;
-            
+            listView1.Items[comboBox1.SelectedIndex].Selected = true;            
         }
+        #endregion
     }
 }
